@@ -49,6 +49,18 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+
+  # Debugging tool for the Rails console
+  gem 'pry-rails', '~> 0.3.11'
+
+  # Testing framework for creating and running tests
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.3'
+
+  # Gems for code quality, performance improvements, and adherence to Rails standards
+  gem 'rubocop', '~> 1.65', '>= 1.65.1'
+  gem 'rubocop-performance', '~> 1.21', '>= 1.21.1'
+  gem 'rubocop-rails', '~> 2.25', '>= 2.25.1'
+  gem 'rubocop-rspec', '~> 3.0', '>= 3.0.4'
 end
 
 group :development do
