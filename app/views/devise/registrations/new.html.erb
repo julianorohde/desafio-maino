@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333333;
+    }
+
+    .password-field-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .password-info {
+      margin-left: 10px;
+      font-style: italic;
+      color: #666666;
+      font-size: 0.8em;
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555555;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .actions input[type="submit"], .actions a.button {
+      background-color: #4CAF50;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .actions input[type="submit"]:hover, .actions a.button:hover {
+      background-color: #45a049;
+    }
+
+    .actions a {
+      color: #ffffff;
+    }
+
+    .actions a:hover {
+      text-decoration: underline;
+    }
+
+    .btn-custom {
+      background-color: #4CAF50; /* Cor de fundo verde */
+      color: white; /* Cor do texto */
+      padding: 10px 24px; /* Espaçamento interno */
+      border: none; /* Sem borda */
+      border-radius: 5px; /* Bordas arredondadas */
+      text-align: center; /* Alinhamento do texto */
+      font-size: 16px; /* Tamanho da fonte */
+      cursor: pointer; /* Cursor em formato de mão */
+      width: 120px; /* Largura fixa */
+      display: inline-block; /* Alinhamento lado a lado */
+    }
+
+    .auth-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sign Up</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :name, "Nome" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :cpf, "CPF" %>
+        <%= f.text_field :cpf, autocomplete: "cpf" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <div class="password-field-container">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+            <em class="password-info">(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+        </div>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions">
+        <button class="btn-custom">Register</button>
+        <%= link_to 'Log In', new_session_path(resource_name), class: "button" %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>
