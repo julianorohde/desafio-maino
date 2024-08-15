@@ -58,6 +58,12 @@ gem 'nokogiri', '~> 1.16', '>= 1.16.7'
 # A Ruby library for reading and writing ZIP files
 gem 'rubyzip', '~> 2.3', '>= 2.3.2'
 
+# Background job processing for Ruby
+gem 'sidekiq', '~> 7.3', '>= 7.3.1'
+
+# A gem for generating Excel files (XLSX)
+gem 'caxlsx', '~> 4.1'
+
 group :development, :test do
   # Gem to generate valid CPF and CNPJ for testing purposes
   gem 'cpf_cnpj', '~> 0.5.0'
