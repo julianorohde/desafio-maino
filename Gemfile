@@ -53,6 +53,9 @@ gem 'strong_migrations', '~> 2.0'
 gem 'devise', '~> 4.9', '>= 4.9.4'
 
 group :development, :test do
+  # Gem to generate valid CPF and CNPJ for testing purposes
+  gem 'cpf_cnpj', '~> 0.5.0'
+
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
 
