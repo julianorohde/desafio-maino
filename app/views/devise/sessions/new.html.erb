@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555555;
+    }
+
+    .field input[type="email"],
+    .field input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-custom {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .btn-custom:hover {
+      background-color: #45a049;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card {
+      margin-top: 15px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button-group .btn-custom {
+      flex: 1;
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Log in</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field remember-me">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "btn-custom" %>
+      </div>
+    <% end %>
+
+    <div class="button-group">
+      <%= link_to 'Sign Up', new_user_registration_path, class: "btn-custom" %>
+      <%= link_to 'Reset Password', new_user_password_path, class: "btn-custom" %>
+    </div>
+  </div>
+</body>
+</html>
