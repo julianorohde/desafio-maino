@@ -56,6 +56,12 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
 
+  # Factory bot for setting up Ruby objects as test data
+  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
+
+  # Faker gem to generate fake data for testing and development
+  gem 'faker', '~> 3.4', '>= 3.4.2'
+
   # Debugging tool for the Rails console
   gem 'pry-rails', '~> 0.3.11'
 
@@ -67,6 +73,12 @@ group :development, :test do
   gem 'rubocop-performance', '~> 1.21', '>= 1.21.1'
   gem 'rubocop-rails', '~> 2.25', '>= 2.25.1'
   gem 'rubocop-rspec', '~> 3.0', '>= 3.0.4'
+
+  # Provides additional matchers for testing with RSpec
+  gem 'shoulda-matchers', '~> 6.3', '>= 6.3.1'
+
+  # Code coverage analysis tool for measuring test coverage
+  gem 'simplecov', '~> 0.22.0'
 end
 
 group :development do

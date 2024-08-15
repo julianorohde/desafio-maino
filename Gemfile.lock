@@ -109,8 +109,16 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
+    docile (1.4.1)
     drb (2.2.1)
     erubi (1.13.0)
+    factory_bot (6.4.6)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -284,6 +292,14 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda-matchers (6.3.1)
+      activesupport (>= 5.2.0)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -335,6 +351,8 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9, >= 4.9.4)
+  factory_bot_rails (~> 6.4, >= 6.4.3)
+  faker (~> 3.4, >= 3.4.2)
   importmap-rails
   jbuilder
   pg (~> 1.1)
@@ -348,6 +366,8 @@ DEPENDENCIES
   rubocop-rails (~> 2.25, >= 2.25.1)
   rubocop-rspec (~> 3.0, >= 3.0.4)
   selenium-webdriver
+  shoulda-matchers (~> 6.3, >= 6.3.1)
+  simplecov (~> 0.22.0)
   sprockets-rails
   stimulus-rails
   strong_migrations (~> 2.0)
