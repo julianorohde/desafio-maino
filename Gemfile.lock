@@ -357,6 +357,7 @@ DEPENDENCIES
   faker (~> 3.4, >= 3.4.2)
   importmap-rails
   jbuilder
+  nokogiri (~> 1.16, >= 1.16.7)
   pg (~> 1.1)
   pry-rails (~> 0.3.11)
   puma (>= 5.0)
@@ -367,6 +368,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.21, >= 1.21.1)
   rubocop-rails (~> 2.25, >= 2.25.1)
   rubocop-rspec (~> 3.0, >= 3.0.4)
+  rubyzip (~> 2.3, >= 2.3.2)
   selenium-webdriver
   shoulda-matchers (~> 6.3, >= 6.3.1)
   simplecov (~> 0.22.0)

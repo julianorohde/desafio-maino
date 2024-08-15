@@ -52,6 +52,12 @@ gem 'strong_migrations', '~> 2.0'
 # Provides authentication solutions for Rails applications
 gem 'devise', '~> 4.9', '>= 4.9.4'
 
+# An HTML, XML, SAX, and Reader parser with XPath and CSS selector support
+gem 'nokogiri', '~> 1.16', '>= 1.16.7'
+
+# A Ruby library for reading and writing ZIP files
+gem 'rubyzip', '~> 2.3', '>= 2.3.2'
+
 group :development, :test do
   # Gem to generate valid CPF and CNPJ for testing purposes
   gem 'cpf_cnpj', '~> 0.5.0'
