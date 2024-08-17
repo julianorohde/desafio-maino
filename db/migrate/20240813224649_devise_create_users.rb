@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[7.1]
-  def change
+  def up
     create_table :users do |t|
       ## User details
       t.string :name, null: false
@@ -38,5 +38,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
 
       t.timestamps null: false
     end
+  end
+
+  def down
+    drop_table :users
   end
 end
