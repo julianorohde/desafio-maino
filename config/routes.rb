@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   root 'pages#index'
   get 'pages/index'
   mount Sidekiq::Web => '/sidekiq'
+
+  resource :eletronic_invoice do
+    post :create, on: :collection
+    get :export, on: :collection
+    get :index
+  end
 end
