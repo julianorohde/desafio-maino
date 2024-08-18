@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :cpf, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+
+  has_many :eletronic_invoices
 end
