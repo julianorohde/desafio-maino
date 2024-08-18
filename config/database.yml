@@ -1,21 +1,22 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  user: postgres
-  password: postgres
-  host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: desafio_maino_development
+  user: postgres
+  password: postgres
+  host: localhost
 
 test:
   <<: *default
   database: desafio_maino_test
+  user: postgres
+  password: postgres
+  host: localhost
 
 production:
   <<: *default
-  database: desafio_maino_production
-  username: desafio_maino
-  password: <%= ENV["DESAFIO_MAINO_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
