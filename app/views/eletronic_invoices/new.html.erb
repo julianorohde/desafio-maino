@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviar XML ou ZIP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .form-group input[type="file"] {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .btn-custom {
+      background-color: #595959;
+      color: white;
+      padding: 10px 24px;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+      display: block;
+      margin: 0 auto;
+      text-decoration: none;
+    }
+
+    .btn-custom:hover {
+      background-color: #737373;
+      text-decoration: underline;
+    }
+
+    .button-spacing {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Enviar XML ou ZIP</h2>
+
+    <%= form_with url: eletronic_invoice_path, local: true, html: { id: 'file-upload-form', enctype: 'multipart/form-data' } do |form| %>
+      <div class="form-group">
+        <%= form.label :file, 'Selecione um arquivo XML ou ZIP:' %>
+        <%= form.file_field :file %>
+      </div>
+      <%= form.submit 'Enviar', class: 'btn-custom button-spacing' %>
+      <%= link_to 'Visualizar suas Notas Fiscais', eletronic_invoice_path, class: 'btn-custom button-spacing' %>
+      <%= link_to 'Voltar', pages_index_path, class: 'btn-custom' %>
+    <% end %>
+  </div>
+</body>
+</html>

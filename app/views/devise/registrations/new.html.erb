@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sign Up</title>
+  <title>Registre-se</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -69,7 +69,7 @@
     }
 
     .actions input[type="submit"], .actions a.button {
-      background-color: #4CAF50;
+      background-color: #595959;
       color: #ffffff;
       border: none;
       padding: 10px 20px;
@@ -80,8 +80,10 @@
       display: inline-block;
     }
 
-    .actions input[type="submit"]:hover, .actions a.button:hover {
-      background-color: #45a049;
+    .actions input[type="submit"]:hover, .actions a.button:hover,
+    .btn-custom:hover {
+      background-color: #4d4d4d;
+      text-decoration: underline;
     }
 
     .actions a {
@@ -93,7 +95,7 @@
     }
 
     .btn-custom {
-      background-color: #4CAF50;
+      background-color: #595959;
       color: white;
       padding: 10px 24px;
       border: none;
@@ -104,15 +106,11 @@
       width: 120px;
       display: inline-block;
     }
-
-    .auth-button:hover {
-      background-color: #0056b3;
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Sign Up</h2>
+    <h2>Registre-se</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
@@ -147,8 +145,8 @@
       </div>
 
       <div class="actions">
-        <button class="btn-custom">Register</button>
-        <%= link_to 'Log In', new_session_path(resource_name), class: "button" %>
+        <button class="btn-custom">Registrar</button>
+        <%= link_to 'Login', new_session_path(resource_name), class: "button" %>
       </div>
     <% end %>
   </div>

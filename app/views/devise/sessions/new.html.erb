@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Log in</title>
+  <title>Login</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -60,7 +60,7 @@
     }
 
     .btn-custom {
-      background-color: #4CAF50;
+      background-color: #595959;
       color: white;
       padding: 10px 24px;
       border: none;
@@ -72,10 +72,12 @@
       box-sizing: border-box;
       margin: 0 auto;
       display: block;
+      text-decoration: none;
     }
 
     .btn-custom:hover {
-      background-color: #45a049;
+      background-color: #4d4d4d;
+      text-decoration: underline;
     }
 
     .remember-me {
@@ -95,17 +97,19 @@
       margin-top: 20px;
     }
 
-    .button-group .btn-custom {
-      flex: 1;
-      width: 100%;
-      padding: 10px 0;
-      font-size: 16px;
+    .button-group a {
+      text-decoration: none;
+      display: block;
+    }
+
+    .button-group a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Log in</h2>
+    <h2>Login</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -126,13 +130,13 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit "Log in", class: "btn-custom" %>
+        <%= f.submit "Login", class: "btn-custom" %>
       </div>
     <% end %>
 
     <div class="button-group">
-      <%= link_to 'Sign Up', new_user_registration_path, class: "btn-custom" %>
-      <%= link_to 'Reset Password', new_user_password_path, class: "btn-custom" %>
+      <%= link_to 'Registre-se', new_user_registration_path, class: "btn-custom" %>
+      <%= link_to 'Resetar senha', new_user_password_path, class: "btn-custom" %>
     </div>
   </div>
 </body>

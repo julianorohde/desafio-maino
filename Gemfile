@@ -52,6 +52,18 @@ gem 'strong_migrations', '~> 2.0'
 # Provides authentication solutions for Rails applications
 gem 'devise', '~> 4.9', '>= 4.9.4'
 
+# An HTML, XML, SAX, and Reader parser with XPath and CSS selector support
+gem 'nokogiri', '~> 1.16', '>= 1.16.7'
+
+# A Ruby library for reading and writing ZIP files
+gem 'rubyzip', '~> 2.3', '>= 2.3.2'
+
+# Background job processing for Ruby
+gem 'sidekiq', '~> 7.3', '>= 7.3.1'
+
+# A gem for generating Excel files (XLSX)
+gem 'caxlsx', '~> 4.1'
+
 # Process manager for applications with multiple components
 gem 'foreman', '~> 0.88.1'
 
@@ -72,7 +84,9 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.11'
 
   # Testing framework for creating and running tests
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'rspec-rails', '~> 6.1', '>= 6.1.3'
+  gem 'rspec-sidekiq', '~> 5.0'
 
   # Gems for code quality, performance improvements, and adherence to Rails standards
   gem 'rubocop', '~> 1.65', '>= 1.65.1'
