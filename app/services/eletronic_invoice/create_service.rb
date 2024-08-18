@@ -36,14 +36,12 @@ class EletronicInvoice::CreateService
   def handle_zip_file
     datas = []
 
-    temp_file_path =
-      Tempfile.create([file_path, '.zip'], Rails.root.join('tmp')) do |temp_file|
-        temp_file.write(file.body.read)
-        temp_file.flush
-        temp_file.path
-      end
+    Tempfile.create([file_path, '.zip'], Rails.root.join('tmp')) do |temp_file|
+      temp_file.write(file.body.read)
+      temp_file.flush
+    end
 
-    Zip::File.open(temp_file_path) do |zip_file|
+    Zip::File.open("tmp/#{file_path}") do |zip_file|
       zip_file.each do |entry|
         next unless File.extname(entry.name) == '.xml'
 
