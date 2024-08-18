@@ -52,6 +52,9 @@ gem 'strong_migrations', '~> 2.0'
 # Provides authentication solutions for Rails applications
 gem 'devise', '~> 4.9', '>= 4.9.4'
 
+# Process manager for applications with multiple components
+gem 'foreman', '~> 0.88.1'
+
 group :development, :test do
   # Gem to generate valid CPF and CNPJ for testing purposes
   gem 'cpf_cnpj', '~> 0.5.0'
