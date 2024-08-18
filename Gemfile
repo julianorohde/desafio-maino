@@ -67,6 +67,8 @@ gem 'caxlsx', '~> 4.1'
 # Process manager for applications with multiple components
 gem 'foreman', '~> 0.88.1'
 
+gem 'aws-sdk'
+
 group :development, :test do
   # Gem to generate valid CPF and CNPJ for testing purposes
   gem 'cpf_cnpj', '~> 0.5.0'

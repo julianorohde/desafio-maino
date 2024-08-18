@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'aws-sdk'
+
 class EletronicInvoicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_params, only: %i[create]
@@ -14,7 +16,7 @@ class EletronicInvoicesController < ApplicationController
   end
 
   def create
-    EletronicInvoice::CreateJob.perform_async(sanitize_file(file), current_user.id)
+    EletronicInvoice::CreateJob.perform_async(upload_file_and_return_name, current_user.id)
 
     redirect_to root_path, alert: 'Seu XML será processado e exibido em breve.'
   end
@@ -50,6 +52,21 @@ class EletronicInvoicesController < ApplicationController
       flash.now[:alert] = error_message
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def upload_file_and_return_name
+    s3_client.put_object(
+      key: file.original_filename,
+      body: file.read,
+      bucket: 'default',
+      content_type: file.content_type
+    )
+
+    file.original_filename
+  end
+
+  def s3_client
+    @s3_client ||= Aws::S3::Client.new
   end
 
   def sanitize_file(file)
