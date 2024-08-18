@@ -81,6 +81,7 @@ group :development, :test do
   gem 'pry-rails', '~> 0.3.11'
 
   # Testing framework for creating and running tests
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
   gem 'rspec-rails', '~> 6.1', '>= 6.1.3'
 
   # Gems for code quality, performance improvements, and adherence to Rails standards
