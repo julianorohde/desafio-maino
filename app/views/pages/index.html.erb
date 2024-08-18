@@ -26,13 +26,13 @@
       box-sizing: border-box;
     }
 
-    h1 {
+    h2 {
       color: #333333;
       margin-bottom: 20px;
     }
 
-    .btn-custom {
-      background-color: #4CAF50;
+    .btn-custom, .btn-secondary {
+      background-color: #595959;
       color: white;
       padding: 10px 24px;
       border: none;
@@ -43,23 +43,34 @@
       width: calc(100% - 48px);
       box-sizing: border-box;
       margin: 0 auto;
+      margin-top: 20px;
       display: block;
+      text-decoration: none;
     }
 
-    .btn-custom:hover {
-      background-color: #45a049;
+    .btn-secondary {
+      background-color: #007BFF;
+      margin-top: 20px;
+    }
+
+    .btn-custom:hover, .btn-secondary:hover {
+      background-color: #737373;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <% if user_signed_in? %>
-      <h1>Welcome Home, <%= current_user.name %></h1>
-      <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn-custom' %>
+      <h1>Olá, <%= current_user.name %>.</h1>
+      <%= link_to 'Enviar XML ou ZIP', new_eletronic_invoice_path, class: 'btn-custom' %>
+      <%= link_to 'Visualizar Notas Fiscais', eletronic_invoice_path, class: 'btn-custom' %>
+      <%= link_to 'Sair', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn-custom' %>
     <% else %>
-      <h1>Home</h1>
-      <%= link_to 'Sign in', new_user_session_path, class: 'btn-custom' %>
-    <% end %>
+      <h2>Gerador de Relatórios XML</h2>
+      <%= link_to 'Login', new_user_session_path, class: 'btn-custom' %>
+      <%= link_to 'Registre-se', new_user_registration_path, class: "btn-custom" %>
+    <% end %>    
   </div>
 </body>
 </html>

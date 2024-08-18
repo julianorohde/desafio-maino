@@ -59,7 +59,7 @@
     }
 
     .btn-custom {
-      background-color: #4CAF50;
+      background-color: #595959;
       color: white;
       padding: 10px 24px;
       border: none;
@@ -71,10 +71,12 @@
       box-sizing: border-box;
       margin: 0 auto;
       display: block;
+      text-decoration: none;
     }
 
     .btn-custom:hover {
-      background-color: #45a049;
+      background-color: #4d4d4d;
+      text-decoration: underline;
     }
 
     .button-group {
@@ -94,7 +96,7 @@
 </head>
 <body>
   <div class="container">
-    <h2>Forgot your password?</h2>
+    <h2>Esqueceu sua senha?</h2>
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -105,13 +107,13 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Send me reset password instructions", class: "btn-custom" %>
+        <%= f.submit "Enviar instruções para redefinir a senha", class: "btn-custom" %>
       </div>
     <% end %>
 
     <div class="button-group">
-      <%= link_to 'Log In', new_session_path(resource_name), class: "btn-custom" %>
-      <%= link_to 'Sign Up', new_registration_path(resource_name), class: "btn-custom" %>
+      <%= link_to 'Login', new_session_path(resource_name), class: "btn-custom" %>
+      <%= link_to 'Registre-se', new_registration_path(resource_name), class: "btn-custom" %>
     </div>
   </div>
 </body>
