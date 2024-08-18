@@ -30,5 +30,8 @@ module DesafioMaino
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.active_job.queue_adapter = :sidekiq
+
+    # Add the 'app/jobs' directory to the autoload paths, allowing Rails to automatically load job classes
+    config.autoload_paths += %W[#{config.root}/app/jobs]
   end
 end
