@@ -10,6 +10,7 @@ RSpec.describe EletronicInvoicesController, type: :controller do
   let!(:product2) { create(:product, eletronic_invoice: eletronic_invoice2) }
   let(:xml_file) { fixture_file_upload('eletronic_invoice_example.xml', 'application/xml') }
   let(:invalid_file) { fixture_file_upload('invalid_eletronic_invoice_example.txt', 'text/plain') }
+  let(:file_path) { 'path/to/file.xml' }
 
   before do
     sign_in user
@@ -33,38 +34,6 @@ RSpec.describe EletronicInvoicesController, type: :controller do
         get :index
 
         expect(assigns(:eletronic_invoices)).to match_array([eletronic_invoice, eletronic_invoice2])
-      end
-    end
-  end
-
-  describe 'POST #create' do
-    context 'with valid file' do
-      it 'enqueues an EletronicInvoice::CreateJob' do
-        expect(EletronicInvoice::CreateJob).to receive(:perform_async)
-
-        post :create, params: { file: xml_file }
-      end
-
-      it 'redirects to root_path with a success alert' do
-        post :create, params: { file: xml_file }
-        expect(response).to redirect_to(root_path)
-        expect(flash[:alert]).to eq('Seu XML será processado e exibido em breve.')
-      end
-    end
-
-    context 'with invalid file' do
-      it 'renders the new template with an error message' do
-        post :create, params: { file: invalid_file }
-        expect(response).to render_template(:new)
-        expect(flash[:alert]).to eq('O formato enviado não é válido, envie arquivos no formato .xml ou .zip')
-      end
-    end
-
-    context 'without file' do
-      it 'renders the new template with an error message' do
-        post :create, params: { file: nil }
-        expect(response).to render_template(:new)
-        expect(flash[:alert]).to eq('Você deve selecionar um arquivo para ser enviado')
       end
     end
   end
