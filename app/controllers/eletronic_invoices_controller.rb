@@ -69,12 +69,6 @@ class EletronicInvoicesController < ApplicationController
     @s3_client ||= Aws::S3::Client.new
   end
 
-  def sanitize_file(file)
-    FileUtils.copy(file.path, Rails.root.join('tmp', File.basename(file.path)))
-
-    Rails.root.join('tmp', File.basename(file.path)).to_s
-  end
-
   def send_file_to_download(file_path)
     send_file(
       file_path,
