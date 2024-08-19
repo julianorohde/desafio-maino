@@ -36,23 +36,18 @@ class EletronicInvoice::CreateService
   def handle_zip_file
     datas = []
 
-    Tempfile.create([file_path, '.zip'], Rails.root.join('tmp')) do |temp_file|
+    File.open(Rails.root.join("tmp/#{file_path}"), 'wb') do |temp_file|
       temp_file.write(file.body.read)
-      temp_file.flush
     end
 
-    Zip::File.open("tmp/#{file_path}") do |zip_file|
+    Zip::File.open(Rails.root.join("tmp/#{file_path}")) do |zip_file|
       zip_file.each do |entry|
         next unless File.extname(entry.name) == '.xml'
 
-        file_path = "/tmp/#{entry.name}"
-
+        file_path = Rails.root.join("tmp/#{entry.name}")
         entry.extract(file_path) { true }
-
         doc = Nokogiri::XML(File.read(file_path))
-
         data = extract_data(doc)
-
         datas << data
       end
     end
