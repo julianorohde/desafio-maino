@@ -22,6 +22,10 @@ class EletronicInvoice::CreateService
 
   attr_reader :file_path, :user_id
 
+  def s3_client
+    @s3_client ||= Aws::S3::Client.new
+  end
+
   def handlers
     {
       '.zip' => :handle_zip_file,
@@ -32,29 +36,37 @@ class EletronicInvoice::CreateService
   def handle_zip_file
     datas = []
 
-    Zip::File.open(file_path) do |zip_file|
+    File.open(Rails.root.join("tmp/#{file_path}"), 'wb') do |temp_file|
+      temp_file.write(file.body.read)
+    end
+
+    Zip::File.open(Rails.root.join("tmp/#{file_path}")) do |zip_file|
       zip_file.each do |entry|
         next unless File.extname(entry.name) == '.xml'
 
-        file_path = "/tmp/#{entry.name}"
-
+        file_path = Rails.root.join("tmp/#{entry.name}")
         entry.extract(file_path) { true }
-
         doc = Nokogiri::XML(File.read(file_path))
-
         data = extract_data(doc)
-
         datas << data
       end
     end
   end
 
   def handle_xml_file
-    doc = Nokogiri::XML(File.read(file_path))
+    doc = Nokogiri::XML(file.body.read)
 
     datas = []
 
     datas << extract_data(doc)
+  end
+
+  def file
+    @file ||=
+      s3_client.get_object(
+        bucket: 'default',
+        key: file_path
+      )
   end
 
   def extract_data(doc)
